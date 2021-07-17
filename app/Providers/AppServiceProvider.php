@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Http\Controllers\Home;
+use App\Models\User;
 use Illuminate\Support\ServiceProvider;
+use App\Models\UserModel;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +16,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->when(Home::class)
+                  ->needs(UserModel::class)
+                  ->give(function () {
+                      return new UserModel();
+                  });
     }
 
     /**

@@ -16,3 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/home', [\App\Http\Controllers\Home::class, 'index']);
+
+Route::get('/cache', function () {
+    return \Illuminate\Support\Facades\Cache::get('key');
+});
+
+Route::get('foo', function () {
+    return 'hello world';
+});
+
+Route::get('/user/{id}', \App\Http\Controllers\ShowProfile::class);
