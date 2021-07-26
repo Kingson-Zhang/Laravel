@@ -20,6 +20,7 @@ class ProcessPodcast implements ShouldQueue
      */
     public function __construct()
     {
+        $app = $this->app;
         //
     }
 
